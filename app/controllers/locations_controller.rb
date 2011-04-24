@@ -1,12 +1,10 @@
 class LocationsController < ApplicationController
-  # GET /locations
-  # GET /locations.xml
+
   def index
     if user_signed_in?
       @user = current_user.Locations
       respond_to do |format|
         format.html # index.html.erb
-        format.xml  { render :xml => @locations }
       end
     else
       respond_to do |format|
@@ -14,17 +12,6 @@ class LocationsController < ApplicationController
       end
     end
     
-  end
-
-  # GET /locations/1
-  # GET /locations/1.xml
-  def show
-    @location = Location.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @location }
-    end
   end
 
   # GET /locations/new
@@ -46,15 +33,12 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.xml
   def create
-    @location = Location.new(params[:location])
-
+    @location = current_user.Locations.new(params[:location])
     respond_to do |format|
       if @location.save
         format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
-        format.xml  { render :xml => @location, :status => :created, :location => @location }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }
       end
     end
   end

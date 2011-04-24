@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Address</th>
     <th>Contact info</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,8 +15,6 @@
     <td><%= location.name %></td>
     <td><%= location.address %></td>
     <td><%= location.contact_info %></td>
-    <td><%= location.user_id %></td>
-    <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Edit', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
